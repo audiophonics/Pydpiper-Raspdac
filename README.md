@@ -42,3 +42,11 @@ sudo cp pydpiper.service /etc/systemd/system
 sudo systemctl enable pydpiper
 sudo systemctl start pydpiper
 ```
+
+
+Pour afficher les infos depuis un serveur LMS la ligne de commande du service serait : 
+```
+docker run --network=host --privileged -v /var/log:/var/log:rw  -v /home/volumio/pydPiper:/app:rw dhrone/pydpiper:v0.31-alpha python /app/pydPiper.py --lms --lmsplayer b8:27:eb:e4:52:6d --driver winstar_weg --width 80 --height 16 --rs 7 --e 8 --d4 25 --d5 24 --d6 23 --d7 27 --timezone 'Europe/Paris' --temperature celcius --pages pages_raspdac_16x2.py
+```
+
+En remplacant l'adresse MAC par celle de votre platine (--lmsplayer)
