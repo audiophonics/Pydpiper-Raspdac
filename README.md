@@ -14,6 +14,7 @@ cd /home/volumio (for example)
 git clone https://github.com/dhrone/pydPiper.git
 cd pydPiper
 ./install_docker.sh
+wget https://raw.githubusercontent.com/audiophonics/Pydpiper-Raspdac/master/pydPiper.cfg
 wget https://raw.githubusercontent.com/audiophonics/Pydpiper-Raspdac/master/pages_raspdac_16x2.py
 ```
 
@@ -21,19 +22,13 @@ wget https://raw.githubusercontent.com/audiophonics/Pydpiper-Raspdac/master/page
 
 Take care to replace directory with the one where PydPiper is located
 ```
-docker run --network=host --privileged -v /var/log:/var/log:rw  -v /home/volumio/pydPiper:/app:rw dhrone/pydpiper:v0.31-alpha python /app/pydPiper.py --volumio --driver winstar_weg --width 80 --height 16 --rs 7 --e 8 --d4 25 --d5 24 --d6 23 --d7 27 --timezone 'Europe/Paris' --temperature celcius --pages pages_raspdac_16x2.py
-
+sudo docker run --network=host --privileged -v /var/log:/var/log:rw -v /home/volumio/pydPiper:/app:rw dhrone/pydpiper:v0.31-alpha python /app/pydPiper.py
 ```
 
 ## Service Installation :
 
 ```
-nano pydpiper.service
-```
-
-Add this line :
-```
-ExecStart=/usr/bin/docker run --network=host --privileged -v /var/log:/var/log:rw  -v /home/volumio/pydPiper:/app:rw dhrone/pydpiper:v0.31-alpha python /app/pydPiper.py --volumio --driver winstar_weg --width 80 --height 16 --rs 7 --e 8 --d4 25 --d5 24 --d6 23 --d7 27 --timezone 'Europe/Paris' --temperature celcius --pages pages_raspdac_16x2.py
+wget https://raw.githubusercontent.com/audiophonics/Pydpiper-Raspdac/master/pydpiper.service
 ```
 
 Then activate service :
@@ -44,9 +39,5 @@ sudo systemctl start pydpiper
 ```
 
 
-To get Metadata from LMS you can use this command line :
-```
-docker run --network=host --privileged -v /var/log:/var/log:rw  -v /home/volumio/pydPiper:/app:rw dhrone/pydpiper:v0.31-alpha python /app/pydPiper.py --lms --lmsplayer b8:27:eb:e4:52:6d --driver winstar_weg --width 80 --height 16 --rs 7 --e 8 --d4 25 --d5 24 --d6 23 --d7 27 --timezone 'Europe/Paris' --temperature celcius --pages pages_raspdac_16x2_lms.py
-```
-
-Replacing MAC address with the one of your player (--lmsplayer)
+For other software than Volumio, you will have to run the ./install_volumio.sh that launch configure.py script.
+It's allowing to use LMS, Moode, Rune, or MPD music info sources.
