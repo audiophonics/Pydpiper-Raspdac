@@ -28,7 +28,7 @@ WIDGETS = {
 	'artist': { 'type':'text', 'format':'{0}', 'variables':['artist'], 'font':'small','varwidth':True,'effect':('scroll','left',5,5,20,'onloop',3,80)},
 	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small','varwidth':True, 'just':'right', 'size':(50,8) },
 	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small','varwidth':True}, 
-	'ip': { 'type':'text', 'format':'IP :\n{0}', 'variables':['ip'], 'font':'small', 'varwidth':True, 'just':'center', 'size':(65,16) },
+	'ip': { 'type':'text', 'format':'IP :\n{0}', 'variables':['ip'], 'font':'small', 'varwidth':True, 'just':'center', 'size':(80,16) },
 	'elapsed_formatted': { 'type':'text', 'format':'{0}', 'variables':['elapsed_formatted'], 'font':'small', 'varwidth':True, },
 	'time_formatted': { 'type':'text', 'format':'{0}', 'variables':['time_formatted'], 'font':'large', 'just':'right', 'varwidth':True, 'size':(50,16) },
 	'radioAP': { 'type':'text', 'format':"WEB RADIO", 'font':'small', 'varwidth':True, 'size':(45,8), 'just':'left' },
@@ -115,8 +115,9 @@ SEQUENCES = [
 	{
 		'name': 'seqStop',
 		'canvases': [
-			{ 'name':'stoptimetemp_popup', 'duration':9999, 'conditional':"not db['outside_conditions']=='No data'" },
-			{ 'name':'stoptime24', 'duration':9999, 'conditional':"db['outside_conditions']=='No data'" }
+			{ 'name':'stoptimetemp_popup', 'duration':15, 'conditional':"not db['outside_conditions']=='No data'" },
+			{ 'name':'stoptime24', 'duration':15, 'conditional':"db['outside_conditions']=='No data'" },
+			{ 'name':'ip', 'duration':2 }
 		],
 		'conditional': "db['state']=='stop' or db['state']=='pause'"
 	},
