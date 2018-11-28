@@ -28,6 +28,7 @@ WIDGETS = {
 	'artist': { 'type':'text', 'format':'{0}', 'variables':['artist'], 'font':'small','varwidth':True,'effect':('scroll','left',5,5,20,'onloop',3,80)},
 	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small','varwidth':True, 'just':'right', 'size':(50,8) },
 	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small','varwidth':True}, 
+        'encoding': { 'type':'text', 'format':'{0}', 'variables':['encoding'], 'font':'small','varwidth':True},
 	'ip': { 'type':'text', 'format':'IP :\n{0}', 'variables':['ip'], 'font':'small', 'varwidth':True, 'just':'center', 'size':(65,16) },
 	'elapsed_formatted': { 'type':'text', 'format':'{0}', 'variables':['elapsed_formatted'], 'font':'small', 'varwidth':True, },
 	'time_formatted': { 'type':'text', 'format':'{0}', 'variables':['time_formatted'], 'font':'large', 'just':'right', 'varwidth':True, 'size':(50,16) },
@@ -80,7 +81,8 @@ CANVASES = {
 	'stoptime24': { 'widgets': [ ('time_formatted',10,2) ], 'size':(80,16) },
 	'playAP1': { 'widgets': [ ('artist',0,-1), ('album',0,8) ], 'size':(80,16) },
 	'playAP2': { 'widgets': [ ('title',0,8), ('elapsed_formatted',15,0) ],  'size':(80,16) },
-        'playAP3': { 'widgets': [ ('nowplaying',0,8), ('nowplayingdata',45,8),  ('bitdepth',0,-1), ('samplerate',30,-1), ('songprogress',0,15) ], 'size':(80,16) },
+#        'playAP3': { 'widgets': [ ('nowplaying',0,8), ('nowplayingdata',45,8),  ('bitdepth',0,-1), ('samplerate',30,-1), ('songprogress',0,15) ], 'size':(80,16) },
+	'playAP3': { 'widgets': [ ('nowplaying',0,8), ('nowplayingdata',45,8), ('encoding',30,-1), ('songprogress',0,15) ], 'size':(80,16) },
 	'radioAP1': { 'widgets': [ ('radioAP',20,-1), ('title',0,8) ], 'size':(80,16) },
         'radioAP2': { 'widgets': [ ('artist',0,-1), ('position',30,8) ], 'size':(80,16) },
 
