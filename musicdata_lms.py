@@ -282,19 +282,20 @@ class musicdata_lms(musicdata.musicdata):
 		except:
 			self.musicdata[u'bitrate'] = u""
 
-    try:
-      encoding = urllib.unquote(str(self.dataplayer.request("songinfo 2 1 url:"+url+" tags:o", True))).decode(u'utf-8').split(u"type:",1)[1]
-      if encoding == 'flc':
-        self.musicdata[u'encoding'] = u"Flac"
-      elif encoding == 'mp3':
-        self.musicdata[u'encoding'] = u"MP3"
-      elif encoding == 'dsf':
-        self.musicdata[u'encoding'] = u"DSF"
-      elif encoding == 'dff':
-        self.musicdata[u'encoding'] = u"DFF"
-      else :
-        self.musicdata[u'encoding'] = encoding
-     except:
+                try:
+                        encoding = urllib.unquote(str(self.dataplayer.request("songinfo 2 1 url:"+url+" tags:o", True))).decode(u'utf-8').split(u"type:",1)[1]
+                        if encoding == 'flc':
+                                self.musicdata[u'encoding'] = u"Flac"
+                        elif encoding == 'mp3':
+                                self.musicdata[u'encoding'] = u"MP3"
+                        elif encoding == 'dsf':
+                                self.musicdata[u'encoding'] = u"DSF"
+                        elif encoding == 'dff':
+                                self.musicdata[u'encoding'] = u"DFF"
+                        else :
+                                self.musicdata[u'encoding'] = encoding
+                except:
+
 			self.musicdata[u'encoding'] = u""
 
 		self.musicdata[u'tracktype'] = self.musicdata[u'encoding']
